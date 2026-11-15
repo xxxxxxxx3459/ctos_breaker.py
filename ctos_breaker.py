@@ -43,7 +43,7 @@ def handle_message(message):
     try:
         # Отправляем запрос в OpenRouter (модель Venice Edition)
         response = client.chat.completions.create(
-            model="meta-llama/llama-3.3-70b-instruct:free"
+             model="meta-llama/llama-3.3-70b-instruct:free",
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": message.text}
