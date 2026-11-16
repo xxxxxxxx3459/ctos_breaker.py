@@ -14,14 +14,14 @@ def keep_alive(): Thread(target=run).start()
 
 # 2. Настройки бота и ключи (берутся из настроек Render)
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+
 
 bot = telebot.TeleBot(TELEGRAM_TOKEN)
 
-# 3. Подключение к OpenRouter
+# 3. Подключение к Groq
 client = OpenAI(
-    base_url="https://openrouter.ai/api/v1",
-    api_key=OPENROUTER_API_KEY,
+    base_url="https://api.groq.com/openai/v1",
+    api_key=os.getenv("GROQ_API_KEY"),
 )
 
 # 4. Характер Дедсека (Усиленный)
@@ -43,7 +43,7 @@ def handle_message(message):
     try:
         # Отправляем запрос в OpenRouter (модель Venice Edition)
         response = client.chat.completions.create(
-             model="meta-llama/llama-3.3-70b-instruct:free",
+              model="llama-3.3-70b-versatile",
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": message.text}
