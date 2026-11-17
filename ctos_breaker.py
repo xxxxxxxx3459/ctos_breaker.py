@@ -8,7 +8,7 @@ TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 # ВАЖНО: Замените ссылку ниже на вашу реальную ссылку из Render (без слэша в конце)!
-RENDER_URL = https://ctos-breaker-py.onrender.com
+RENDER_URL = "https://ctos-breaker-py.onrender.com"
 
 # Отключаем потоки (threaded=False), чтобы Webhook работал стабильно
 bot = telebot.TeleBot(TELEGRAM_TOKEN, threaded=False)
